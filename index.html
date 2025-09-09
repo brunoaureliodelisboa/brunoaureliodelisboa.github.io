@@ -35,6 +35,14 @@
       .w3-text-teal {
         color: #3A7CA5 !important;
       }
+
+      /* Estilo para texto de email e LinkedIn sem link, mas com cor e negrito */
+      .contact-text {
+        color: #3A7CA5;
+        font-weight: 600; /* leve negrito */
+        cursor: default;
+        text-decoration: none;
+      }
     </style>
 
   </head>
@@ -52,14 +60,16 @@
 
           <div class="w3-white w3-text-grey w3-card-4">
             <!-- @falvojr: This container has been modified to not use a profile picture. -->
-            <div class="w3-container">
+            <div class="w3-container w3-center">
               <h2>Bruno Aurelio de Lisboa</h2>
+              <img src="https://media.licdn.com/dms/image/v2/D4D03AQE0T9_l2Rr3Ug/profile-displayphoto-shrink_800_800/B4DZbg.dDlIAAc-/0/1747531191676?e=1760572800&v=beta&t=KvQTYaXui5V7A4abGSDm1Z8_7ivetO996KJcp0TP3yg" alt="Foto de Bruno Aurelio" style="width:150px; height:150px; border-radius:50%; margin-top:10px;">
             </div>
             <div class="w3-container">
               <!-- <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large"></i>Técnico Especializado III</p> -->
               <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large"></i>Graduando em Ciências da Computação</p>
               <p><i class="fa fa-home fa-fw w3-margin-right w3-large"></i>Aparecida - SP</p>
-              <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large"></i>brunoaureliodelisboa@gmail.com</p>
+              <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large"></i><span class="contact-text">brunoaureliodelisboa@gmail.com</span></p>
+              <p><i class="fa fa-linkedin fa-fw w3-margin-right w3-large"></i><span class="contact-text">Linkedin</span></p>
               <!-- <p><i class="fa fa-phone fa-fw w3-margin-right w3-large"></i>() 98718-6497</p> -->
               <hr>
 
