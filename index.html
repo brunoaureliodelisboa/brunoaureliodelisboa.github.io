@@ -54,111 +54,94 @@
         text-decoration: underline;
       }
 
-      /* Estilos do carrossel de certificações */
-      .carousel {
+      /* Estilos do carrossel de certificados */
+      .cert-carousel-container {
         position: relative;
-        max-width: 600px;
-        margin: 0 auto 20px auto;
+        max-width: 100%;
+        margin: 20px 0 40px 0;
         overflow: hidden;
       }
 
-      .carousel-track-container {
-        overflow: hidden;
-        width: 100%;
-      }
-
-      .carousel-track {
+      .cert-carousel-track {
         display: flex;
-        transition: transform 0.5s ease-in-out;
-        padding: 0;
-        margin: 0;
-        list-style: none;
+        transition: transform 0.4s ease-in-out;
       }
 
-      .carousel-slide {
-        min-width: 100%;
-        box-sizing: border-box;
-        padding: 20px;
-        background-color: #f1f1f1;
-        border-radius: 8px;
+      .cert-carousel-item {
+        flex: 0 0 auto;
+        width: 120px;
+        margin-right: 15px;
         text-align: center;
+      }
+
+      .cert-carousel-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+      .cert-carousel-item img:hover {
+        transform: scale(1.05);
+      }
+
+      .cert-carousel-item p {
+        font-size: 0.85rem;
+        margin-top: 6px;
+        color: #3A7CA5;
         font-weight: 600;
-        color: #3A7CA5;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
       }
 
-      .carousel-slide a {
-        color: #3A7CA5;
-        text-decoration: none;
-      }
-      .carousel-slide a:hover {
-        text-decoration: underline;
-      }
-
-      .carousel-btn {
+      /* Botões de navegação */
+      .cert-carousel-button {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        background-color: transparent;
+        background-color: rgba(58,124,165,0.8);
         border: none;
-        font-size: 2rem;
-        color: #3A7CA5;
+        color: white;
+        font-size: 24px;
+        padding: 6px 12px;
         cursor: pointer;
+        border-radius: 4px;
         user-select: none;
-        padding: 0 10px;
+        z-index: 10;
       }
-
-      .carousel-btn.prev {
+      .cert-carousel-button:disabled {
+        background-color: rgba(58,124,165,0.3);
+        cursor: default;
+      }
+      .cert-carousel-button.left {
         left: 0;
       }
-
-      .carousel-btn.next {
+      .cert-carousel-button.right {
         right: 0;
       }
 
-      .carousel-btn:focus {
-        outline: none;
-      }
-
-      /* Miniaturas abaixo do carrossel */
-      .carousel-thumbnails {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
-        flex-wrap: wrap;
-      }
-
-      .carousel-thumbnail {
-        width: 80px;
-        height: 60px;
-        object-fit: cover;
-        border-radius: 6px;
-        cursor: pointer;
-        border: 2px solid transparent;
-        transition: border-color 0.3s;
-      }
-
-      .carousel-thumbnail:hover,
-      .carousel-thumbnail.active {
-        border-color: #3A7CA5;
-      }
-
-      /* Responsividade das miniaturas */
-      @media (max-width: 480px) {
-        .carousel-thumbnail {
-          width: 60px;
-          height: 45px;
+      /* Responsividade */
+      @media (max-width: 600px) {
+        .cert-carousel-item {
+          width: 90px;
+          margin-right: 10px;
+        }
+        .cert-carousel-button {
+          font-size: 20px;
+          padding: 4px 8px;
         }
       }
 
-      /* Estilo para embed Credly */
-      .credly-embed-container {
+      /* Estilo embed Credly para ficar alinhado e responsivo */
+      .credly-embed-wrapper {
         width: 150px;
-        margin: 0 auto;
+        margin: 0 15px 0 0;
+        flex: 0 0 auto;
+      }
+      @media (max-width: 600px) {
+        .credly-embed-wrapper {
+          width: 90px;
+          margin-right: 10px;
+        }
       }
     </style>
 
@@ -252,53 +235,51 @@
             Busco um espaço onde minha experiência possa somar no crescimento da empresa, ao mesmo tempo em que troco conhecimento e continuo evoluindo profissionalmente, colocando em prática minhas habilidades técnicas..</p>
           </div>
 
-          <!-- Carrossel de Certificações -->
+          <!-- Carrossel de Certificados -->
           <div class="w3-container w3-card w3-white w3-margin-bottom">
-            <h2 class="w3-text-grey w3-padding-16">
-              <i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge"></i>Certificações
-            </h2>
-            <div class="carousel" aria-label="Carrossel de Certificações">
-              <button class="carousel-btn prev" aria-label="Anterior">&#10094;</button>
-              <div class="carousel-track-container">
-                <ul class="carousel-track">
-                  <li class="carousel-slide">
-                    <a href="https://cloudapp.animaeducacao.com.br/validador-documento/?code=cdadc7708cdd499eb1551466f205962d" target="_blank" rel="noopener noreferrer" aria-label="Certificado Programação de Soluções Computacionais">
-                      Programação de Soluções Computacionais
-                    </a>
-                  </li>
-                  <li class="carousel-slide">
-                    <a href="https://cloudapp.animaeducacao.com.br/validador-documento/?code=c558408b0bde484eb3b1820272acbf3b" target="_blank" rel="noopener noreferrer" aria-label="Certificado Modelagem de Software">
-                      Modelagem de Software
-                    </a>
-                  </li>
-                  <li class="carousel-slide" aria-label="Certificado Cyber Threat Management">
-                    <!-- Embed Credly -->
-                    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="20bfb615-ace0-4901-a0f8-ee7666050367" data-share-badge-host="https://www.credly.com"></div>
-                  </li>
-                  <li class="carousel-slide">
-                    <a href="https://hermes.dio.me/certificates/OEOXTFJW.pdf" target="_blank" rel="noopener noreferrer" aria-label="Certificado Bootcamp IA Generativa com Microsoft">
-                      Bootcamp IA Generativa com Microsoft
-                    </a>
-                  </li>
-                  <li class="carousel-slide">
-                    <a href="https://drive.google.com/file/d/1svl_v_NoZo8Y3fkGgoeJEOqQ6xzRCW2d/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Certificado Técnico em informática - Senac">
-                      Técnico em informática - Senac
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <button class="carousel-btn next" aria-label="Próximo">&#10095;</button>
+            <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge"></i>Certificados</h2>
+            <div class="cert-carousel-container" id="cert-carousel">
 
-              <!-- Miniaturas -->
-              <div class="carousel-thumbnails" role="list" aria-label="Miniaturas dos certificados">
-                <img src="https://media.licdn.com/dms/image/v2/D4D22AQGdWYtBafUX6g/feedshare-shrink_2048_1536/B4DZkYeRYEH0Aw-/0/1757052213322?e=1760572800&v=beta&t=zuJb0khT4DHLTA1OE0T_TRD1naOaSfDTIrFs1M0pq7Y" alt="Miniatura Certificado Programação de Soluções Computacionais" class="carousel-thumbnail active" data-index="0" tabindex="0" role="button" aria-pressed="true">
-                <img src="https://media.licdn.com/dms/image/v2/D4D22AQFnw9wQuJJQ4A/feedshare-shrink_2048_1536/B4DZkYd_8vGkAw-/0/1757052141977?e=1760572800&v=beta&t=0kyXu5S2kRnVfeqoGSr5XHIryqqLYhNJF8qEFNCLQs8" alt="Miniatura Certificado Modelagem de Software" class="carousel-thumbnail" data-index="1" tabindex="0" role="button" aria-pressed="false">
-                <div class="carousel-thumbnail" data-index="2" tabindex="0" role="button" aria-pressed="false" aria-label="Miniatura Certificado Cyber Threat Management" style="width:80px; height:60px; border-radius:6px; cursor:pointer; display:flex; align-items:center; justify-content:center; border:2px solid transparent;">
-                  <img src="https://images.credly.com/size/150x150/images/20bfb615-ace0-4901-a0f8-ee7666050367.png" alt="Miniatura Certificado Cyber Threat Management" style="max-width: 100%; max-height: 100%; border-radius: 6px;">
+              <button class="cert-carousel-button left" id="btn-prev" aria-label="Anterior" disabled><i class="fa fa-chevron-left"></i></button>
+
+              <div class="cert-carousel-track" id="carousel-track">
+
+                <div class="cert-carousel-item">
+                  <a href="https://cloudapp.animaeducacao.com.br/validador-documento/?code=cdadc7708cdd499eb1551466f205962d" target="_blank" title="Programação de Soluções Computacionais">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D22AQGdWYtBafUX6g/feedshare-shrink_2048_1536/B4DZkYeRYEH0Aw-/0/1757052213322?e=1760572800&v=beta&t=zuJb0khT4DHLTA1OE0T_TRD1naOaSfDTIrFs1M0pq7Y" alt="Certificado Programação de Soluções Computacionais">
+                    <p>Programação de Soluções Computacionais</p>
+                  </a>
                 </div>
-                <img src="https://media.licdn.com/dms/image/v2/D4D2DAQEHoPg_JVG5QA/profile-treasury-image-shrink_800_800/B4DZaZSkbzGsAY-/0/1746328504851?e=1758135600&v=beta&t=-LC20LduFuAJZHyOEThDcUYbDRg798acLbdEFj3Jxgc" alt="Miniatura Certificado Bootcamp IA Generativa com Microsoft" class="carousel-thumbnail" data-index="3" tabindex="0" role="button" aria-pressed="false">
-                <img src="https://media.licdn.com/dms/image/v2/D4D2DAQFRVNU5zexbDQ/profile-treasury-image-shrink_800_800/B4DZk0.RObHsAY-/0/1757530364818?e=1758135600&v=beta&t=7UzwXQDSVwhowia-CePdR6E2D1gicMDTlluANxOUzhk" alt="Miniatura Certificado Técnico em informática - Senac" class="carousel-thumbnail" data-index="4" tabindex="0" role="button" aria-pressed="false">
+
+                <div class="cert-carousel-item">
+                  <a href="https://cloudapp.animaeducacao.com.br/validador-documento/?code=c558408b0bde484eb3b1820272acbf3b" target="_blank" title="Modelagem de Software">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D22AQFnw9wQuJJQ4A/feedshare-shrink_2048_1536/B4DZkYd_8vGkAw-/0/1757052141977?e=1760572800&v=beta&t=0kyXu5S2kRnVfeqoGSr5XHIryqqLYhNJF8qEFNCLQs8" alt="Certificado Modelagem de Software">
+                    <p>Modelagem de Software</p>
+                  </a>
+                </div>
+
+                <div class="credly-embed-wrapper" title="Cyber Threat Management">
+                  <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="20bfb615-ace0-4901-a0f8-ee7666050367" data-share-badge-host="https://www.credly.com"></div>
+                </div>
+
+                <div class="cert-carousel-item">
+                  <a href="https://hermes.dio.me/certificates/OEOXTFJW.pdf" target="_blank" title="Bootcamp IA Generativa com Microsoft">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D2DAQEHoPg_JVG5QA/profile-treasury-image-shrink_800_800/B4DZaZSkbzGsAY-/0/1746328504851?e=1758135600&v=beta&t=-LC20LduFuAJZHyOEThDcUYbDRg798acLbdEFj3Jxgc" alt="Certificado Bootcamp IA Generativa com Microsoft">
+                    <p>Bootcamp IA Generativa com Microsoft</p>
+                  </a>
+                </div>
+
+                <div class="cert-carousel-item">
+                  <a href="https://drive.google.com/file/d/1svl_v_NoZo8Y3fkGgoeJEOqQ6xzRCW2d/view?usp=drive_link" target="_blank" title="Técnico em Informática - Senac">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D2DAQFRVNU5zexbDQ/profile-treasury-image-shrink_800_800/B4DZk0.RObHsAY-/0/1757530364818?e=1758135600&v=beta&t=7UzwXQDSVwhowia-CePdR6E2D1gicMDTlluANxOUzhk" alt="Certificado Técnico em Informática - Senac">
+                    <p>Técnico em Informática - Senac</p>
+                  </a>
+                </div>
+
               </div>
+
+              <button class="cert-carousel-button right" id="btn-next" aria-label="Próximo"><i class="fa fa-chevron-right"></i></button>
+
             </div>
           </div>
 
@@ -306,12 +287,24 @@
             <h2 class="w3-text-grey w3-padding-16">
               <i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge"></i>Experiências
             </h2>
-            <div class="w3-container">
-              <h5 class="w3-opacity"><b>Equipe4web - Técnico em manutenção de equipamentos de informática</b></h5>
-              <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>junho de 2024 - fevereiro de 2025</h6>
-              <p>Responsável pela manutenção preventiva e corretiva de equipamentos de informática, incluindo diagnóstico e solução de problemas de hardware e software. Realização de suporte técnico presencial e remoto para clientes, garantindo a funcionalidade dos sistemas e a satisfação dos usuários. Organização e controle de chamados técnicos para otimizar o atendimento e a resolução de problemas.</p>
-              <hr>
-            </div>
-            <div class="w3-container">
-              <h5 class="w3-opacity"><b>Santuário Nacional de Aparecida - Auxiliar administrativo</b></h5>
-              <h6 class="w3-text-teal"><i class="fa
+          <div class="w3-container">
+            <h5 class="w3-opacity"><b>Equipe4web - Técnico em manutenção de equipamentos de informática</b></h5>
+            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>junho de 2024 - fevereiro de 2025</h6>
+            <p>Responsável pela manutenção preventiva e corretiva de equipamentos de informática, incluindo diagnóstico e solução de problemas de hardware e software. Realização de suporte técnico presencial e remoto para clientes, garantindo a funcionalidade dos sistemas e a satisfação dos usuários. Organização e controle de chamados técnicos para otimizar o atendimento e a resolução de problemas.</p>
+            <hr>
+          </div>
+          <div class="w3-container">
+            <h5 class="w3-opacity"><b>Santuário Nacional de Aparecida - Auxiliar administrativo</b></h5>
+            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>julho de 2023 - abril de 2024</h6>
+            <p>Atuação em atividades administrativas com foco em suporte técnico. Atendimento aos usuários internos e externos para resolução de dúvidas e problemas, além de organização e controle de documentos. Participação em projetos para melhoria.</p>
+            <hr>
+          </div>
+          <div class="w3-container">
+            <h5 class="w3-opacity"><b>Seculum Vigilância e Segurança S/C Ltda - Assistente administrativo</b></h5>
+            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>maio de 2021 - julho de 2023</h6>
+            <p>Desempenho de funções administrativas com suporte técnico, incluindo organização de rotinas internas e atendimento a colaboradores. Auxílio na manutenção de equipamentos e sistemas utilizados pela empresa, além de suporte na gestão de chamados técnicos. Contribuição para a melhoria dos processos administrativos e tecnológicos da empresa.</p>
+            <hr>
+          </div>
+          </div>
+
+          <div class="w3-container w3-card
