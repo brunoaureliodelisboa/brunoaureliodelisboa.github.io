@@ -20,6 +20,23 @@
       font-family: "Roboto", sans-serif;
     }
 
+    .contact-text {
+      color: #3A7CA5;
+      font-weight: 600;
+      cursor: default;
+      text-decoration: none;
+    }
+
+    .linkedin-link {
+      color: #3A7CA5;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .linkedin-link:hover {
+      text-decoration: underline;
+    }
+
     .cert-carousel-container {
       position: relative;
       overflow: hidden;
@@ -55,19 +72,20 @@
     .cert-carousel-item p {
       margin-top: 8px;
       font-size: 14px;
-      color: #333;
+      color: #3A7CA5;
+      font-weight: 600;
     }
 
     .cert-carousel-button {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: #fff;
+      background: #3A7CA5;
       border: none;
       cursor: pointer;
       padding: 8px;
       border-radius: 50%;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      color: #fff;
       z-index: 1;
       user-select: none;
     }
@@ -85,7 +103,6 @@
       cursor: not-allowed;
     }
 
-    /* Media queries para telas menores */
     @media (max-width: 600px) {
       .cert-carousel-item {
         flex: 0 0 90%;
@@ -93,28 +110,43 @@
         min-width: auto;
       }
     }
+
+    /* Rodapé personalizado */
+    footer {
+      background-color: #3A7CA5;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 20px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: underline;
+    }
   </style>
 </head>
 
 <body class="w3-light-grey">
   <div class="w3-content w3-margin-top" style="max-width:1400px;">
     <div class="w3-row-padding">
-      
-      <!-- Coluna Esquerda (substituída pela versão memorizada) -->
+
+      <!-- Coluna Esquerda com nome e foto -->
       <div class="w3-third">
         <div class="w3-white w3-text-grey w3-card-4">
-          <div class="w3-container w3-center">
-            <h2>Bruno Aurelio de Lisboa</h2>
-            <img src="https://media.licdn.com/dms/image/v2/D4D03AQE0T9_l2Rr3Ug/profile-displayphoto-shrink_800_800/B4DZbg.dDlIAAc-/0/1747531191676?e=1760572800&v=beta&t=KvQTYaXui5V7A4abGSDm1Z8_7ivetO996KJcp0TP3yg" alt="Foto de Bruno Aurelio" style="width:150px; height:150px; border-radius:50%; margin-top:10px;">
+          <div class="w3-display-container">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQE0T9_l2Rr3Ug/profile-displayphoto-shrink_800_800/B4DZbg.dDlIAAc-/0/1747531191676?e=1760572800&v=beta&t=KvQTYaXui5V7A4abGSDm1Z8_7ivetO996KJcp0TP3yg" style="width:100%" alt="Avatar" />
+            <div class="w3-display-bottomleft w3-container w3-text-black" style="background: rgba(255,255,255,0.7);">
+              <h2 style="margin:0; font-weight:700;">Bruno Aurelio de Lisboa</h2>
+            </div>
           </div>
           <div class="w3-container">
-            <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large"></i>Graduando em Ciências da Computação</p>
-            <p><i class="fa fa-home fa-fw w3-margin-right w3-large"></i>Aparecida - SP</p>
-            <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large"></i><span class="contact-text">brunoaureliodelisboa@gmail.com</span></p>
-            <p><i class="fa fa-linkedin fa-fw w3-margin-right w3-large"></i><a href="https://www.linkedin.com/in/brunoaureliodelisboa/" target="_blank" class="linkedin-link">Linkedin</a></p>
+            <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Graduando em Ciências da Computação</p>
+            <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Aparecida - SP</p>
+            <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><span class="contact-text">brunoaureliodelisboa@gmail.com</span></p>
+            <p><i class="fa fa-linkedin fa-fw w3-margin-right w3-large w3-text-teal"></i><a href="https://www.linkedin.com/in/brunoaureliodelisboa/" target="_blank" class="linkedin-link">Linkedin</a></p>
             <hr>
-
-            <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right"></i>Skills</b></p>
+            <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
             <p>C#</p>
             <div class="w3-light-grey w3-round-xlarge w3-small">
               <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:0%">0%</div>
@@ -135,13 +167,8 @@
             <div class="w3-light-grey w3-round-xlarge w3-small">
               <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:5%">5%</div>
             </div>
-            <p>Essenciais</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:5%">5%</div>
-            </div>
             <br>
-
-            <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right"></i>Idiomas</b></p>
+            <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Idiomas</b></p>
             <p>Português</p>
             <div class="w3-light-grey w3-round-xlarge">
               <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>
@@ -157,7 +184,11 @@
         <!-- Sobre -->
         <div class="w3-container w3-card w3-white w3-margin-bottom">
           <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-user fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Sobre</h2>
-          <p>Profissional com experiência em manutenção de computadores, suporte técnico e redes. Atualmente cursando Ciência da Computação na Unifg, com previsão de conclusão em 2025. Buscando oportunidades para aplicar e expandir conhecimentos em desenvolvimento de software e inteligência artificial.</p>
+          <p>👋 Oi, me chamo Bruno Aurélio.
+            Minha trajetória passou por manutenção de computadores, suporte N1 e N2, além de contato com ERPs como TOTVS, Wareline e SPData. No caminho, também atuei em funções administrativas, o que me deu uma visão mais completa de como a tecnologia e os processos se conectam dentro das empresas.
+            Hoje sigo focado em C#, .NET, SQL, Git/GitHub e IA/Machine Learning, transformando o que aprendi na prática em uma base sólida para criar soluções melhores e mais eficientes.
+            Busco um espaço onde minha experiência possa somar no crescimento da empresa, ao mesmo tempo em que troco conhecimento e continuo evoluindo profissionalmente, colocando em prática minhas habilidades técnicas.
+          </p>
         </div>
 
         <!-- Carrossel de Certificados -->
@@ -172,28 +203,24 @@
                   <p>Programação de Soluções Computacionais</p>
                 </a>
               </div>
-
-              <div class="cert-carousel-item">
-                <a href="https://www.credly.com/badges/20bfb615-ace0-4901-a0f8-ee7666050367" target="_blank">
-                  <img src="https://images.credly.com/size/680x680/images/5d5ac32b-d239-42b8-9665-8a921dc3ab47/image.png" alt="Cyber Threat Management" style="width: 80%" />
-                  <p>Cyber Threat Management</p>
-                </a>
-              </div>
-
-              <div class="cert-carousel-item">
-                <a href="https://hermes.dio.me/certificates/OEOXTFJW.pdf" target="_blank">
-                  <img src="https://media.licdn.com/dms/image/v2/D4D2DAQEHoPg_JVG5QA/profile-treasury-image-shrink_800_800/B4DZaZSkbzGsAY-/0/1746328504851?e=1758135600&v=beta&t=-LC20LduFuAJZHyOEThDcUYbDRg798acLbdEFj3Jxgc" alt="Bootcamp IA Microsoft" />
-                  <p>Bootcamp IA Generativa com Microsoft</p>
-                </a>
-              </div>
-
               <div class="cert-carousel-item">
                 <a href="https://cloudapp.animaeducacao.com.br/validador-documento/?code=c558408b0bde484eb3b1820272acbf3b" target="_blank">
                   <img src="https://media.licdn.com/dms/image/v2/D4D22AQFnw9wQuJJQ4A/feedshare-shrink_2048_1536/B4DZkYd_8vGkAw-/0/1757052141977?e=1760572800&v=beta&t=0kyXu5S2kRnVfeqoGSr5XHIryqqLYhNJF8qEFNCLQs8" alt="Modelagem de Software" />
                   <p>Modelagem de Software</p>
                 </a>
               </div>
-
+              <div class="cert-carousel-item">
+                <a href="https://www.credly.com/badges/20bfb615-ace0-4901-a0f8-ee7666050367" target="_blank">
+                  <img src="https://images.credly.com/size/680x680/images/5d5ac32b-d239-42b8-9665-8a921dc3ab47/image.png" alt="Cyber Threat Management" style="width: 80%" />
+                  <p>Cyber Threat Management</p>
+                </a>
+              </div>
+              <div class="cert-carousel-item">
+                <a href="https://hermes.dio.me/certificates/OEOXTFJW.pdf" target="_blank">
+                  <img src="https://media.licdn.com/dms/image/v2/D4D2DAQEHoPg_JVG5QA/profile-treasury-image-shrink_800_800/B4DZaZSkbzGsAY-/0/1746328504851?e=1758135600&v=beta&t=-LC20LduFuAJZHyOEThDcUYbDRg798acLbdEFj3Jxgc" alt="Bootcamp IA Microsoft" />
+                  <p>Bootcamp IA Generativa com Microsoft</p>
+                </a>
+              </div>
               <div class="cert-carousel-item">
                 <a href="https://drive.google.com/file/d/1svl_v_NoZo8Y3fkGgoeJEOqQ6xzRCW2d/view?usp=drive_link" target="_blank">
                   <img src="https://media.licdn.com/dms/image/v2/D4D2DAQFRVNU5zexbDQ/profile-treasury-image-shrink_800_800/B4DZk0.RObHsAY-/0/1757530364818?e=1758135600&v=beta&t=7UzwXQDSVwhowia-CePdR6E2D1gicMDTlluANxOUzhk" alt="Técnico em Informática - Senac" />
@@ -205,72 +232,82 @@
           </div>
         </div>
 
-        <script>
-          const track = document.getElementById("carousel-track");
-          const btnPrev = document.getElementById("btn-prev");
-          const btnNext = document.getElementById("btn-next");
-          let position = 0;
-
-          function updateButtons() {
-            btnPrev.disabled = position <= 0;
-            const maxPosition = track.scrollWidth - track.parentElement.offsetWidth;
-            btnNext.disabled = position >= maxPosition;
-          }
-
-          btnNext.addEventListener("click", () => {
-            const containerWidth = track.parentElement.offsetWidth;
-            const maxPosition = track.scrollWidth - containerWidth;
-            position += containerWidth * 0.8;
-            if (position > maxPosition) position = maxPosition;
-            track.style.transform = `translateX(-${position}px)`;
-            updateButtons();
-          });
-
-          btnPrev.addEventListener("click", () => {
-            const containerWidth = track.parentElement.offsetWidth;
-            position -= containerWidth * 0.8;
-            if (position < 0) position = 0;
-            track.style.transform = `translateX(-${position}px)`;
-            updateButtons();
-          });
-
-          window.addEventListener("resize", () => {
-            const maxPosition = track.scrollWidth - track.parentElement.offsetWidth;
-            if (position > maxPosition) {
-              position = maxPosition < 0 ? 0 : maxPosition;
-              track.style.transform = `translateX(-${position}px)`;
-            }
-            updateButtons();
-          });
-
-          updateButtons();
-        </script>
-
-        <!-- Experiência Profissional -->
+        <!-- Experiências Atualizadas -->
         <div class="w3-container w3-card w3-white w3-margin-bottom">
-          <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Experiência Profissional</h2>
+          <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge"></i>Experiências</h2>
+
           <div class="w3-container">
-            <h5 class="w3-opacity"><b>Suporte Técnico / Santuário Nacional de Aparecida</b></h5>
-            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2019 - 2023</h6>
-            <p>Atuação na manutenção de computadores, suporte técnico a usuários e administração de redes internas.</p>
-            <hr />
+            <h5 class="w3-opacity"><b>Equipe4web - Técnico em manutenção de equipamentos de informática</b></h5>
+            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>junho de 2024 - fevereiro de 2025</h6>
+            <p>Responsável pela manutenção preventiva e corretiva de equipamentos de informática, incluindo diagnóstico e solução de problemas de hardware e software. Realização de suporte técnico presencial e remoto para clientes, garantindo a funcionalidade dos sistemas e a satisfação dos usuários. Organização e controle de chamados técnicos para otimizar o atendimento e a resolução de problemas.</p>
+            <hr>
           </div>
+
           <div class="w3-container">
-            <h5 class="w3-opacity"><b>Técnico de Informática / Equipe4Web</b></h5>
-            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2016 - 2019</h6>
-            <p>Responsável pela manutenção de computadores, suporte remoto e presencial, além de configuração de servidores.</p>
-            <hr />
+            <h5 class="w3-opacity"><b>Santuário Nacional de Aparecida - Auxiliar administrativo</b></h5>
+            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>julho de 2023 - abril de 2024</h6>
+            <p>Atuação em atividades administrativas com foco em suporte técnico. Atendimento aos usuários internos e externos para resolução de dúvidas e problemas, além de organização e controle de documentos. Participação em projetos para melhoria.</p>
+            <hr>
           </div>
+
           <div class="w3-container">
-            <h5 class="w3-opacity"><b>Autônomo</b></h5>
-            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2016 - Presente</h6>
-            <p>Prestação de serviços de manutenção e suporte técnico em informática para clientes particulares e pequenas empresas.</p>
-            <br />
+            <h5 class="w3-opacity"><b>Seculum Vigilância e Segurança S/C Ltda - Assistente administrativo</b></h5>
+            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>maio de 2021 - julho de 2023</h6>
+            <p>Desempenho de funções administrativas com suporte técnico, incluindo organização de rotinas internas e atendimento a colaboradores. Auxílio na manutenção de equipamentos e sistemas utilizados pela empresa, além de suporte na gestão de chamados técnicos. Contribuição para a melhoria dos processos administrativos e tecnológicos da empresa.</p>
+            <hr>
           </div>
+
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Rodapé adicionado do código secundário -->
+  <footer>
+    <p>Minhas Redes Sociais</p>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  </footer>
+
+  <script>
+    const track = document.getElementById("carousel-track");
+    const btnPrev = document.getElementById("btn-prev");
+    const btnNext = document.getElementById("btn-next");
+    let position = 0;
+
+    function updateButtons() {
+      btnPrev.disabled = position <= 0;
+      const maxPosition = track.scrollWidth - track.parentElement.offsetWidth;
+      btnNext.disabled = position >= maxPosition;
+    }
+
+    btnNext.addEventListener("click", () => {
+      const containerWidth = track.parentElement.offsetWidth;
+      const maxPosition = track.scrollWidth - containerWidth;
+      position += containerWidth * 0.8;
+      if (position > maxPosition) position = maxPosition;
+      track.style.transform = `translateX(-${position}px)`;
+      updateButtons();
+    });
+
+    btnPrev.addEventListener("click", () => {
+      const containerWidth = track.parentElement.offsetWidth;
+      position -= containerWidth * 0.8;
+      if (position < 0) position = 0;
+      track.style.transform = `translateX(-${position}px)`;
+      updateButtons();
+    });
+
+    window.addEventListener("resize", () => {
+      const maxPosition = track.scrollWidth - track.parentElement.offsetWidth;
+      if (position > maxPosition) {
+        position = maxPosition < 0 ? 0 : maxPosition;
+        track.style.transform = `translateX(-${position}px)`;
+      }
+      updateButtons();
+    });
+
+    updateButtons();
+  </script>
 </body>
 
 </html>
