@@ -151,10 +151,67 @@
       color: white;
       text-decoration: underline;
     }
+    /* Botão de imprimir */
+#print-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #3A7CA5;
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#print-btn:hover {
+  background-color: #2f6390;
+}
+
+/* Estilo para impressão A4 */
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  #print-btn,
+  .cert-carousel-button {
+    display: none !important;
+  }
+
+  .w3-content {
+    max-width: 100% !important;
+  }
+
+  .w3-row-padding {
+    margin: 0 !important;
+  }
+
+  .w3-third,
+  .w3-twothird {
+    width: 100% !important;
+    float: none !important;
+  }
+
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .w3-card {
+    box-shadow: none !important;
+  }
+}
   </style>
 </head>
 
 <body class="w3-light-grey">
+  <!-- Botão de imprimir -->
+<button id="print-btn" onclick="window.print()"><i class="fa fa-print"></i> Imprimir</button>
   <div class="w3-content w3-margin-top" style="max-width:1400px;">
     <div class="w3-row-padding">
 
