@@ -20,6 +20,66 @@
       font-family: "Roboto", sans-serif;
     }
 
+    .w3-row-padding>.w3-third {
+      width: 42%;
+    }
+    .w3-row-padding>.w3-twothird {
+      width: 58%;
+    }
+    @media (max-width: 600px) {
+        .w3-row-padding>.w3-third,
+        .w3-row-padding>.w3-twothird {
+            width: 100%;
+        }
+    }
+
+    /* Ajuste do w3-content para a barra lateral */
+    .w3-content {
+      margin-top: 16px !important;
+      max-width: 1400px;
+      padding-left: 16px; /* Adiciona padding para a barra lateral */
+    }
+
+    /* Ajuste da barra superior para ser também a lateral */
+    .top-bar {
+      width: 16px; /* Largura da barra lateral */
+      height: 100%; /* Ocupa a altura total */
+      background-color: #d3d3d3; /* Cor do plano de fundo w3-light-grey */
+      position: fixed; /* Fixa no topo e na esquerda */
+      top: 0;
+      left: 0;
+      z-index: 998; /* Abaixo do botão de imprimir, mas acima do conteúdo */
+    }
+    
+    #print-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background-color: #3A7CA5;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: background-color 0.3s;
+    }
+    #print-button:hover {
+      background-color: #2c6082;
+    }
+    #print-button i {
+      margin-right: 8px;
+    }
+
+    #profile-name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 24px;
+    }
+
     .contact-text {
       color: #3A7CA5;
       font-weight: 600;
@@ -37,7 +97,6 @@
       text-decoration: underline;
     }
 
-    /* Estilos do Carrossel (para Certificados e Projetos) */
     .cert-carousel-container {
       position: relative;
       overflow: hidden;
@@ -75,7 +134,6 @@
       border-radius: 5px;
     }
 
-    /* Reduzindo apenas a imagem Cyber Threat Management em 50% */
     .cert-carousel-item img[alt="Cyber Threat Management"] {
       width: 50% !important;
       height: auto !important;
@@ -116,19 +174,6 @@
       cursor: not-allowed;
     }
 
-    @media (max-width: 600px) {
-      .cert-carousel-item {
-        flex: 0 0 90%;
-        max-width: 90%;
-        min-width: auto;
-      }
-
-      .cert-carousel-item img {
-        height: 150px;
-      }
-    }
-
-    /* Barra de progresso personalizada */
     .w3-light-grey {
       background-color: #d3d3d3 !important;
     }
@@ -141,7 +186,6 @@
       color: #3A7CA5 !important;
     }
 
-    /* Rodapé personalizado */
     footer {
       background-color: #3A7CA5;
       color: white;
@@ -154,10 +198,108 @@
       color: white;
       text-decoration: underline;
     }
+    
+    .print-only-list {
+      display: none;
+    }
+
+    @media print {
+      .top-bar, #print-button {
+        display: none !important;
+      }
+
+      body {
+        margin: 0;
+        font-size: 10pt;
+      }
+      
+      .w3-content {
+        position: relative;
+        margin: 0 !important;
+        padding-left: 0; /* Remove padding na impressão */
+      }
+      
+      .w3-card, .w3-card-4 {
+        box-shadow: none !important;
+        border: 1px solid #eee;
+      }
+      .w3-container.w3-card {
+         margin-bottom: 8px !important;
+      }
+      h2.w3-padding-16 {
+        padding-top: 8px !important;
+        padding-bottom: 4px !important;
+        font-size: 14pt;
+      }
+      p {
+        margin-top: 2px;
+        margin-bottom: 4px;
+      }
+      hr {
+        margin: 6px 0 !important;
+      }
+      
+      .cert-carousel-container, .cert-carousel-button, footer {
+        display: none !important;
+      }
+      
+      .print-only-list {
+        display: block !important;
+        padding-left: 20px;
+        margin-top: 0;
+        list-style-type: disc;
+      }
+      .print-only-list li {
+        padding-bottom: 2px;
+      }
+      .print-only-list a {
+        color: #333;
+        text-decoration: none;
+      }
+
+      .w3-third {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 42%;
+        padding-right: 16px !important;
+      }
+      
+      .w3-twothird {
+        margin-left: 42%;
+        width: 58%;
+      }
+      
+      #experiences-section > .w3-container {
+        page-break-inside: avoid;
+      }
+      #exp-equipe4web {
+        page-break-before: avoid;
+      }
+
+      #graduando-text {
+        white-space: nowrap;
+        font-size: 9.5pt;
+      }
+
+      #profile-name {
+        font-size: 12pt !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
   </style>
 </head>
 
 <body class="w3-light-grey">
+
+  <div class="top-bar"></div> 
+
+  <button id="print-button" onclick="window.print()">
+    <i class="fa fa-print"></i> Imprimir
+  </button>
+
   <div class="w3-content w3-margin-top" style="max-width:1400px;">
     <div class="w3-row-padding">
 
@@ -166,13 +308,13 @@
           <div class="w3-display-container">
             <img src="https://media.licdn.com/dms/image/v2/D4D03AQHTrwawL4y2rg/profile-displayphoto-crop_800_800/B4DZmVD4XTHYAI-/0/1759142448372?e=1762387200&v=beta&t=bKos47w9RgOc-fFanasMTGqn-Nv-b8iazNQe5E8ixrs" style="width:100%" alt="Avatar" />
             <div class="w3-display-bottomleft w3-container w3-text-black" style="background: rgba(255,255,255,0.7);">
-              <h2 style="margin:0; font-weight:700;">Bruno Aurelio de Lisboa</h2>
+              <h2 id="profile-name" style="margin:0; font-weight:700;">Bruno Aurelio de Lisboa</h2>
             </div>
           </div>
-          <div class="w3-container">
-            <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Graduando em Ciências da Computação</p>
+          <div class="w3-container w3-padding-16">
+            <p id="graduando-text"><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Graduando em Ciências da Computação</p>
             <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Aparecida - SP</p>
-            <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><span class="contact-text">brunoaureliodelisboa@gmail.com</span></p>
+            <p style="display: flex; align-items: center;"><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><span class="contact-text" style="word-break: normal;">brunoaureliodelisboa@gmail.com</span></p>
             <p><i class="fa fa-linkedin fa-fw w3-margin-right w3-large w3-text-teal"></i><a href="https://www.linkedin.com/in/brunoaureliodelisboa/" target="_blank" class="linkedin-link">Linkedin</a></p>
             <hr>
             <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
@@ -203,7 +345,7 @@
       <div class="w3-twothird">
         <div class="w3-container w3-card w3-white w3-margin-bottom">
           <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-user fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Sobre</h2>
-          <p>👋 Oi, me chamo Bruno Aurélio. Minha trajetória passou por manutenção de computadores, suporte N1 e N2, além de contato com ERPs como TOTVS, Wareline e SPData. No caminho, também atuei em funções administrativas, o que me deu uma visão mais completa de como a tecnologia e os processos se conectam dentro das empresas. Hoje sigo focado em C#, .NET, SQL, Git/GitHub e IA/Machine Learning, transformando o que aprendi na prática em uma base sólida para criar soluções melhores e mais eficientes. Busco um espaço onde minha experiência possa somar no crescimento da empresa, ao mesmo tempo em que troco conhecimento e continuo evoluindo profissionalmente, colocando em prática minhas habilidades técnicas.</p>
+          <p>👋 Oi, me chamo Bruno Aurélio. Minha trajetória passou por manutenção de computadores, suporte N1 e N2, além de contato com ERPs como TOTVS, Wareline e SPData. No caminho, também atuei em funções administrativas, o que me deu uma visão mais completa de como a tecnologia e os processos se conectam dentro das empresas. Hoje sigo focado em C#, .NET, SQL, Git/GitHub e IA/Machine Learning, transformando o que aprendi na prática em uma base sólida para criar solutions melhores e mais eficientes. Busco um espaço onde minha experiência possa somar no crescimento da empresa, ao mesmo tempo em que troco conhecimento e continuo evoluindo profissionalmente, colocando em prática minhas habilidades técnicas.</p>
         </div>
 
         <div class="w3-container w3-card w3-white w3-margin-bottom">
@@ -238,6 +380,11 @@
               <i class="fa fa-chevron-right"></i>
             </button>
           </div>
+          <ul class="print-only-list">
+            <li><a href="https://github.com/brunoaureliodelisboa/NFe-Tools-CSharp">NFe-Tools em C#</a></li>
+            <li><a href="https://github.com/brunoaureliodelisboa/Power-Automate">Automação Power Automate</a></li>
+            <li>Futuro Projeto</li>
+          </ul>
         </div>
 
         <div class="w3-container w3-card w3-white w3-margin-bottom">
@@ -278,25 +425,33 @@
             </div>
             <button class="cert-carousel-button right" id="btn-next"><i class="fa fa-chevron-right"></i></button>
           </div>
+          <ul class="print-only-list">
+            <li><a href="https://cloudapp.animaeducacao.com.br/validador-documento/?code=cdadc7708cdd499eb1551466f205962d">Programação de Soluções Computacionais</a></li>
+            <li><a href="https://cloudapp.animaeducacao.com.br/validador-documento/?code=c558408b0bde484eb3b1820272acbf3b">Modelagem de Software</a></li>
+            <li><a href="https://www.credly.com/badges/20bfb615-ace0-4901-a0f8-ee7666050367">Cyber Threat Management</a></li>
+            <li><a href="https://hermes.dio.me/certificates/OEOXTFJW.pdf">Bootcamp IA Generativa com Microsoft</a></li>
+            <li><a href="https://drive.google.com/file/d/1svl_v_NoZo8Y3fkGgoeJEOqQ6xzRCW2d/view?usp=sharing">Técnico em Informática - Senac</a></li>
+          </ul>
         </div>
 
-        <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <div id="experiences-section" class="w3-container w3-card w3-white w3-margin-bottom">
           <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Experiências</h2>
-          <div class="w3-container">
+          
+          <div id="exp-equipe4web" class="w3-container">
             <h5 class="w3-opacity"><b>Equipe4web - Técnico em manutenção de equipamentos de informática</b></h5>
-            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>junho de 2024 - fevereiro de 2025</h6>
+            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>junho 2024 - fevereiro 2025</h6>
             <p>Responsável pela manutenção preventiva e corretiva de equipamentos de informática, incluindo diagnóstico e solução de problemas de hardware e software. Realização de suporte técnico presencial e remoto para clientes, garantindo a funcionalidade dos sistemas e a satisfação dos usuários. Organização e controle de chamados técnicos para otimizar o atendimento e a resolução de problemas.</p>
             <hr>
           </div>
           <div class="w3-container">
             <h5 class="w3-opacity"><b>Santuário Nacional de Aparecida - Auxiliar administrativo</b></h5>
-            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>julho de 2023 - abril de 2024</h6>
+            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>julho 2023 - abril 2024</h6>
             <p>Atuação em atividades administrativas com foco em suporte técnico. Atendimento aos usuários internos e externos para resolução de dúvidas e problemas, além de organização e controle de documentos. Participação em projetos para melhoria.</p>
             <hr>
           </div>
           <div class="w3-container">
             <h5 class="w3-opacity"><b>Seculum Vigilância e Segurança S/C Ltda - Assistente administrativo</b></h5>
-            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>maio de 2021 - julho de 2023</h6>
+            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>maio 2021 - julho 2023</h6>
             <p>Desempenho de funções administrativas com suporte técnico, incluindo organização de rotinas internas e atendimento a colaboradores. Auxílio na manutenção de equipamentos e sistemas utilizados pela empresa, além de suporte na gestão de chamados técnicos. Contribuição para a melhoria dos processos administrativos e tecnológicos da empresa.</p>
           </div>
         </div>
@@ -311,16 +466,14 @@
   </footer>
 
   <script>
-    // Função genérica para configurar um carrossel
     function setupCarousel(trackId, prevBtnId, nextBtnId) {
         const track = document.getElementById(trackId);
-        if (!track) return; // Se o carrossel não existir na página, interrompe a função.
+        if (!track) return;
 
         const btnPrev = document.getElementById(prevBtnId);
         const btnNext = document.getElementById(nextBtnId);
         const items = track.querySelectorAll(".cert-carousel-item");
 
-        // Se não houver itens, esconde os botões e para a execução.
         if (items.length === 0) {
             if (btnPrev) btnPrev.style.display = "none";
             if (btnNext) btnNext.style.display = "none";
@@ -328,43 +481,37 @@
         }
 
         let position = 0;
-        let itemWidth = items[0].offsetWidth + 15; // Largura do item + o espaço (gap)
+        let itemWidth = items[0].offsetWidth + 15;
 
-        // Função para atualizar o estado (habilitado/desabilitado) dos botões
         function updateButtons() {
             btnPrev.disabled = position <= 0;
-            // Desabilita o botão 'próximo' quando o fim do conteúdo visível é alcançado
             btnNext.disabled = position >= track.scrollWidth - track.clientWidth - 1;
         }
 
-        // Função para mover o carrossel
         function moveCarousel() {
             track.style.transform = `translateX(-${position}px)`;
             updateButtons();
         }
 
-        // Evento de clique para o botão 'próximo'
         btnNext.addEventListener("click", () => {
             const maxPosition = track.scrollWidth - track.clientWidth;
             position += itemWidth;
             if (position > maxPosition) {
-                position = maxPosition; // Garante que não passe do limite
+                position = maxPosition;
             }
             moveCarousel();
         });
 
-        // Evento de clique para o botão 'anterior'
         btnPrev.addEventListener("click", () => {
             position -= itemWidth;
             if (position < 0) {
-                position = 0; // Garante que não volte além do início
+                position = 0;
             }
             moveCarousel();
         });
 
-        // Evento para ajustar o carrossel quando a tela é redimensionada
         window.addEventListener("resize", () => {
-            track.style.transition = "none"; // Remove a animação durante o ajuste
+            track.style.transition = "none";
             itemWidth = items[0].offsetWidth + 15;
             
             const maxPosition = track.scrollWidth - track.clientWidth;
@@ -373,17 +520,14 @@
             }
 
             moveCarousel();
-            // Adiciona a animação de volta após um pequeno intervalo
             setTimeout(() => { track.style.transition = "transform 0.5s ease-in-out"; }, 50);
         });
 
-        // Chama a função para definir o estado inicial dos botões
         updateButtons();
     }
 
-    // Inicializa os dois carrosséis da página
-    setupCarousel("carousel-track", "btn-prev", "btn-next"); // Para Certificados
-    setupCarousel("proj-carousel-track", "proj-btn-prev", "proj-btn-next"); // Para Projetos
+    setupCarousel("carousel-track", "btn-prev", "btn-next");
+    setupCarousel("proj-carousel-track", "proj-btn-prev", "proj-btn-next");
   </script>
 </body>
 
