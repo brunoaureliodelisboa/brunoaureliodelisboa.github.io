@@ -28,7 +28,7 @@
     h5 { font-size: clamp(1rem, 2vw, 1.25rem); }
     .w3-large { font-size: clamp(1rem, 2.2vw, 1.25rem); }
 
-    /* --- AJUSTE: Justifica o texto de conteúdo na coluna da direita --- */
+    /* Justifica o texto de conteúdo na coluna da direita */
     #about-section p,
     #experiences-section .w3-container p {
       text-align: justify;
@@ -276,15 +276,37 @@
       text-decoration: underline;
     }
     
+    /* Classes para controlar visibilidade na impressão */
+    .print-only {
+        display: none !important;
+    }
     .print-only-list {
       display: none;
     }
 
     @media print {
       html { font-size: 16px; }
-      .top-bar, #print-button {
+      .top-bar, #print-button, .screen-only {
         display: none !important;
       }
+      .print-only {
+        display: inline !important;
+      }
+      .print-link-container { /* Novo estilo para o container do link de impressão */
+        display: inline-flex; /* Para colocar o ícone e o texto lado a lado */
+        align-items: center; /* Alinha verticalmente */
+      }
+      .print-link-style {
+        color: #3A7CA5 !important;
+        font-weight: bold;
+        font-size: 0.9em; /* Diminui um pouco o texto */
+        margin-left: 5px; /* Espaçamento entre o ícone e o texto */
+      }
+      .print-link-icon { /* Garante que o ícone mantenha o tamanho */
+        font-size: 1.2em; /* Pode ajustar conforme a necessidade */
+        margin-right: 0; /* Remove a margem original para o flexbox controlar */
+      }
+
 
       body {
         margin: 0;
@@ -372,9 +394,9 @@
 
 <body class="w3-light-grey">
 
-  <div class="top-bar"></div>
+  <div class="top-bar screen-only"></div>
 
-  <button id="print-button" onclick="window.print()">
+  <button id="print-button" class="screen-only" onclick="window.print()">
     <i class="fa fa-print"></i> Imprimir
   </button>
 
@@ -393,7 +415,15 @@
             <p id="graduando-text"><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Graduando em Ciências da Computação</p>
             <p id="location-text"><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Aparecida - SP</p>
             <p id="email-container"><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><span class="contact-text">brunoaureliodelisboa@gmail.com</span></p>
-            <p><i class="fa fa-linkedin fa-fw w3-margin-right w3-large w3-text-teal"></i><a href="https://www.linkedin.com/in/brunoaureliodelisboa/" target="_blank" class="linkedin-link">Linkedin</a></p>
+            <p>
+              <a href="https://www.linkedin.com/in/brunoaureliodelisboa/" target="_blank" class="linkedin-link screen-only">
+                <i class="fa fa-linkedin fa-fw w3-margin-right w3-large w3-text-teal"></i>Linkedin
+              </a>
+              <span class="print-only print-link-container">
+                <i class="fa fa-linkedin fa-fw w3-large w3-text-teal print-link-icon"></i>
+                <span class="print-link-style">www.linkedin.com/in/brunoaureliodelisboa/</span>
+              </span>
+            </p>
             <hr>
             <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
             <p>Java</p>
@@ -430,7 +460,7 @@
           <h2 class="w3-text-grey w3-padding-16">
             <i class="fa fa-code-fork fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Projetos
           </h2>
-          <div class="cert-carousel-container">
+          <div class="cert-carousel-container screen-only">
             <button class="cert-carousel-button left" id="proj-btn-prev" disabled>
               <i class="fa fa-chevron-left"></i>
             </button>
@@ -467,7 +497,7 @@
 
         <div class="w3-container w3-card w3-white w3-margin-bottom">
           <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Certificados</h2>
-          <div class="cert-carousel-container">
+          <div class="cert-carousel-container screen-only">
             <button class="cert-carousel-button left" id="btn-prev" disabled><i class="fa fa-chevron-left"></i></button>
             <div class="cert-carousel-track" id="carousel-track">
               <div class="cert-carousel-item">
@@ -538,7 +568,7 @@
     </div>
   </div>
 
-  <footer>
+  <footer class="screen-only">
     <p>Minhas Redes Sociais</p>
     <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
   </footer>
