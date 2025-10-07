@@ -13,6 +13,12 @@
     html {
       font-size: clamp(12px, 1.5vw, 16px);
     }
+
+    /* Trava de segurança para impedir overflow horizontal */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+    }
     
     body, h1, h2, h3, h4, h5, h6 {
       font-family: "Roboto", sans-serif;
@@ -21,6 +27,12 @@
     h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
     h5 { font-size: clamp(1rem, 2vw, 1.25rem); }
     .w3-large { font-size: clamp(1rem, 2.2vw, 1.25rem); }
+
+    /* Usando Flexbox para o layout das colunas para evitar vazamento/overflow */
+    .w3-row-padding {
+      display: flex;
+      flex-wrap: wrap;
+    }
     
     /* Mantém o layout de duas colunas em todas as larguras */
     .w3-row-padding>.w3-third {
@@ -67,12 +79,18 @@
       margin-right: 8px;
     }
 
+    #profile-name-container {
+        width: 100%;
+        box-sizing: border-box;
+    }
     #profile-name {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         font-weight: 700;
         margin: 0;
+        font-size: clamp(0.9rem, 2.5vw, 1.8rem);
+        text-align: left; /* Força o alinhamento à esquerda */
     }
 
     .contact-text {
@@ -80,6 +98,21 @@
       font-weight: 600;
       cursor: default;
       text-decoration: none;
+    }
+
+    /* Estilos para garantir que textos específicos fiquem em uma única linha */
+    #graduando-text,
+    #location-text,
+    #email-container,
+    #ia-skill-text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    #email-container {
+        display: flex;
+        align-items: center;
     }
 
     .linkedin-link {
@@ -168,20 +201,50 @@
       opacity: 0.4;
       cursor: not-allowed;
     }
-
-    /* --- INÍCIO DA CORREÇÃO DE OVERFLOW --- */
-    /* Regra para ajustar o carrossel em telas de tablet e celular */
+    
     @media (max-width: 768px) {
       .cert-carousel-item {
-        min-width: 0; /* Remove a largura mínima que causa o problema */
-        flex-basis: 90%; /* Faz o item ocupar mais espaço na tela pequena */
+        min-width: 0;
+        flex-basis: 90%;
+      }
+      
+      .w3-content {
+        padding: 0 8px;
+        box-sizing: border-box;
       }
       .w3-row-padding {
-        /* Remove o padding lateral das colunas em telas muito pequenas para dar mais espaço */
-        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .w3-row-padding > .w3-third,
+      .w3-row-padding > .w3-twothird {
+        padding: 0 4px !important;
+      }
+
+      /* Diminui a fonte de textos específicos para caberem em uma linha */
+      #graduando-text,
+      #location-text,
+      #ia-skill-text {
+          font-size: 10.5px;
+      }
+
+      #graduando-text i,
+      #location-text i {
+          font-size: 12px;
+      }
+
+      /* --- AJUSTE FINAL E ESPECÍFICO PARA O EMAIL --- */
+      #email-container {
+          white-space: normal;      /* Permite a quebra de linha */
+          word-break: break-all;    /* Força a quebra de palavras longas (o email) */
+          font-size: 10.5px;
+      }
+      #email-container i {
+        font-size: 12px;
+        /* Alinha o ícone ao topo caso o texto quebre em duas linhas */
+        align-self: flex-start;
+        margin-top: 2px;
       }
     }
-    /* --- FIM DA CORREÇÃO DE OVERFLOW --- */
 
     .w3-light-grey {
       background-color: #d3d3d3 !important;
@@ -226,6 +289,7 @@
       .w3-content {
         position: relative;
         margin: 0 !important;
+        padding: 0; /* Remove padding na impressão */
       }
       
       .w3-card, .w3-card-4 {
@@ -316,14 +380,14 @@
         <div class="w3-white w3-text-grey w3-card-4">
           <div class="w3-display-container">
             <img src="https://media.licdn.com/dms/image/v2/D4D03AQHTrwawL4y2rg/profile-displayphoto-crop_800_800/B4DZmVD4XTHYAI-/0/1759142448372?e=1762387200&v=beta&t=bKos47w9RgOc-fFanasMTGqn-Nv-b8iazNQe5E8ixrs" style="width:100%" alt="Avatar" />
-            <div class="w3-display-bottomleft w3-container w3-text-black" style="background: rgba(255,255,255,0.7);">
+            <div id="profile-name-container" class="w3-display-bottomleft w3-container w3-text-black" style="background: rgba(255,255,255,0.7);">
               <h2 id="profile-name">Bruno Aurelio de Lisboa</h2>
             </div>
           </div>
           <div class="w3-container w3-padding-16">
             <p id="graduando-text"><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Graduando em Ciências da Computação</p>
-            <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Aparecida - SP</p>
-            <p style="display: flex; align-items: center;"><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><span class="contact-text" style="word-break: break-all;">brunoaureliodelisboa@gmail.com</span></p>
+            <p id="location-text"><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Aparecida - SP</p>
+            <p id="email-container"><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><span class="contact-text">brunoaureliodelisboa@gmail.com</span></p>
             <p><i class="fa fa-linkedin fa-fw w3-margin-right w3-large w3-text-teal"></i><a href="https://www.linkedin.com/in/brunoaureliodelisboa/" target="_blank" class="linkedin-link">Linkedin</a></p>
             <hr>
             <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
@@ -335,7 +399,7 @@
             <div class="w3-light-grey w3-round-xlarge w3-small">
               <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:5%">5%</div>
             </div>
-            <p>IA - Machine Learning</p>
+            <p id="ia-skill-text">IA - Machine Learning</p>
             <div class="w3-light-grey w3-round-xlarge w3-small">
               <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:5%">5%</div>
             </div>
@@ -382,7 +446,7 @@
                   <a href="#" target="_blank" style="cursor:default;">
                     <img src="https://via.placeholder.com/300x180/3A7CA5/FFFFFF?text=Em+Breve" alt="Projeto Futuro" />
                     <p>Futuro Projeto</p>
-                </a>
+                  </a>
               </div>
             </div>
             <button class="cert-carousel-button right" id="proj-btn-next">
@@ -414,7 +478,7 @@
                 </a>
               </div>
               <div class="cert-carousel-item">
-                <a href="https://www.credly.com/badges/20bfb615-ace0-4P01-a0f8-ee7666050367" target="_blank">
+                <a href="https://www.credly.com/badges/20bfb615-ace0-4901-a0f8-ee7666050367" target="_blank">
                   <img src="https://images.credly.com/size/680x680/images/5d5ac32b-d239-42b8-9665-8a921dc3ab47/image.png" alt="Cyber Threat Management" />
                   <p>Cyber Threat Management</p>
                 </a>
